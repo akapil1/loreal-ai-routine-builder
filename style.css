@@ -1,0 +1,496 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --loreal-red: #ff003b;
+  --loreal-gold: #e3a535;
+  --text: #222;
+  --muted: #666;
+  --bg: #fffdfb;
+  --panel: #ffffff;
+  --border: #e7e2db;
+  --soft: #fff6f0;
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+body {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background: linear-gradient(180deg, #fffaf7 0%, #ffffff 35%, #fffaf5 100%);
+  display: flex;
+  justify-content: center;
+  padding: 0 16px 40px;
+}
+
+.page-wrapper {
+  width: 100%;
+  max-width: 1150px;
+}
+
+.site-header {
+  text-align: center;
+  padding-top: 42px;
+  padding-bottom: 16px;
+}
+
+.logo {
+  width: 230px;
+  margin-bottom: 14px;
+}
+
+.site-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: var(--loreal-red);
+}
+
+.site-subtitle {
+  font-size: 1rem;
+  color: var(--muted);
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.toolbar {
+  margin: 28px 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 14px;
+  align-items: center;
+}
+
+.search-section select,
+.search-section input {
+  width: 100%;
+  padding: 15px 16px;
+  font-size: 1rem;
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  background: var(--panel);
+  font-weight: 500;
+  outline: none;
+  transition: 0.25s ease;
+}
+
+.search-section select:focus,
+.search-section input:focus {
+  border-color: var(--loreal-red);
+  box-shadow: 0 0 0 4px rgba(255, 0, 59, 0.08);
+}
+
+.rtl-toggle-wrap {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.rtl-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-weight: 600;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin: 24px 0 34px;
+}
+
+.placeholder-message,
+.empty-state {
+  width: 100%;
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 44px 20px;
+  border: 2px dashed var(--border);
+  border-radius: 18px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.product-card {
+  background: var(--panel);
+  border: 2px solid transparent;
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+}
+
+.product-card.selected {
+  border-color: var(--loreal-red);
+  box-shadow: 0 12px 26px rgba(255, 0, 59, 0.15);
+}
+
+.product-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--loreal-red);
+  color: white;
+  font-size: 0.75rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.product-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: contain;
+  margin-bottom: 12px;
+  background: linear-gradient(180deg, #fffaf5, #fff);
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.product-info h3 {
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.product-brand {
+  color: var(--loreal-gold);
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.product-category {
+  color: var(--muted);
+  font-size: 0.88rem;
+  text-transform: capitalize;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.card-btn {
+  flex: 1;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.select-btn {
+  background: var(--loreal-red);
+  color: white;
+}
+
+.select-btn:hover {
+  opacity: 0.92;
+}
+
+.details-btn {
+  background: #f4efe7;
+  color: #333;
+}
+
+.details-btn:hover {
+  background: #ece3d4;
+}
+
+.product-description {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  display: none;
+}
+
+.product-description.show {
+  display: block;
+}
+
+.selected-products,
+.chatbox {
+  background: var(--panel);
+  border: 2px solid var(--border);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+}
+
+.selected-products {
+  margin-bottom: 28px;
+}
+
+.selected-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  gap: 12px;
+}
+
+.selected-products h2,
+.chatbox h2 {
+  font-size: 1.35rem;
+  color: var(--text);
+}
+
+.selected-products-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-height: 24px;
+}
+
+.selected-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff3f6;
+  color: var(--text);
+  border: 1px solid #ffd0da;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.remove-pill-btn {
+  border: none;
+  background: transparent;
+  color: var(--loreal-red);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.generate-btn,
+.secondary-btn {
+  border: none;
+  border-radius: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.generate-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 16px;
+  font-size: 1rem;
+  color: #fff;
+  background: linear-gradient(90deg, var(--loreal-red), #ff4d6f);
+}
+
+.generate-btn:hover {
+  transform: translateY(-1px);
+}
+
+.secondary-btn {
+  padding: 11px 14px;
+  background: #f5f2ec;
+  color: #333;
+}
+
+.secondary-btn:hover {
+  background: #ebe4d7;
+}
+
+.chatbox {
+  margin-top: 10px;
+}
+
+.chat-window {
+  padding: 18px;
+  font-size: 1rem;
+  line-height: 1.6;
+  min-height: 290px;
+  max-height: 420px;
+  overflow-y: auto;
+  background: #fafafa;
+  border: 1px solid #ececec;
+  border-radius: 16px;
+  margin: 18px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chat-message {
+  max-width: 82%;
+  padding: 12px 14px;
+  border-radius: 16px;
+  white-space: pre-wrap;
+}
+
+.chat-message.user {
+  align-self: flex-end;
+  background: #fff1f5;
+  border: 1px solid #ffd4df;
+}
+
+.chat-message.assistant {
+  align-self: flex-start;
+  background: #fffaf1;
+  border: 1px solid #f5dfae;
+}
+
+.chat-form {
+  display: flex;
+  gap: 12px;
+}
+
+.chat-form input {
+  flex: 1;
+  padding: 14px 14px;
+  font-size: 1rem;
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  outline: none;
+}
+
+.chat-form input:focus {
+  border-color: var(--loreal-red);
+}
+
+.chat-form button {
+  background: var(--loreal-red);
+  color: #fff;
+  border: none;
+  padding: 12px;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.chat-form button:hover {
+  opacity: 0.92;
+}
+
+.site-footer {
+  margin: 42px 0 20px;
+  text-align: center;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.site-footer nav {
+  margin-top: 10px;
+}
+
+.site-footer a {
+  margin: 0 8px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: var(--loreal-red);
+}
+
+.loading-text {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+body.rtl {
+  direction: rtl;
+}
+
+body.rtl .site-header,
+body.rtl .site-footer,
+body.rtl .chatbox,
+body.rtl .selected-products {
+  text-align: right;
+}
+
+body.rtl .selected-header {
+  flex-direction: row-reverse;
+}
+
+body.rtl .chat-message.user {
+  align-self: flex-start;
+}
+
+body.rtl .chat-message.assistant {
+  align-self: flex-end;
+}
+
+@media (max-width: 980px) {
+  .products-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .rtl-toggle-wrap {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .site-title {
+    font-size: 1.6rem;
+  }
+
+  .selected-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .chat-message {
+    max-width: 100%;
+  }
+
+  .logo {
+    width: 180px;
+  }
+}
