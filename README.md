@@ -10,6 +10,7 @@ An AI-powered web application that generates personalized skincare and beauty ro
 ---
 
 ## 📌 Overview
+
 This project expands on a conversational AI assistant by introducing structured product selection and routine generation.
 
 Users can:
